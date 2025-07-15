@@ -1,0 +1,50 @@
+body {
+    font-family: Arial, sans-serif;
+    background: black;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    color: white;
+}
+
+form {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+input,
+select,
+button {
+    padding: 6px;
+    margin: 4px;
+    font-size: 1rem;
+}
+
+#taskList ul {
+    list-style: none;
+    padding: 0;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+#taskList li {
+    margin-bottom: 8px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid white;
+}
+
+#taskList li[style*="red"] #taskList li[style*="orange"] #taskList li[style*="green"] button {
+    border: none;
+    border-radius: 3px;
+    background: greenyellow;
+    color: black;
+    cursor: pointer;
+}
+
+button:hover {
+    background: greenyellow;
+}
