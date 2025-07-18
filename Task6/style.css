@@ -1,0 +1,149 @@
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(135deg, #F3E9DD 0%, #E2C9A0 100%);
+    color: #4B2E19;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 36px;
+    color: #7C5C3E;
+    letter-spacing: 1px;
+    font-weight: 700;
+    font-size: 2.2rem;
+    text-shadow: 0 2px 8px rgba(124, 94, 62, 0.10);
+    margin-bottom: 24px;
+}
+
+.card {
+    background: linear-gradient(120deg, #F9F6F2 0%, #F3E9DD 100%);
+    border-radius: 18px;
+    box-shadow: 0 6px 32px rgba(139, 69, 19, 0.10);
+    max-width: 700px;
+    margin: 0 auto 32px auto;
+    padding: 32px 36px 28px 36px;
+    animation: fadeIn 1s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: none; }
+}
+
+form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: center;
+    justify-content: space-between;
+}
+form input, form select, form button, form label {
+    font-size: 1.05rem;
+}
+form input, form select {
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1px solid #BFA890;
+    outline: none;
+    transition: border 0.2s, box-shadow 0.2s;
+    margin-bottom: 8px;
+    background: #F9F6F2;
+    color: #7C5C3E;
+}
+form input:focus, form select:focus {
+    border: 1.5px solid #A67C52;
+    box-shadow: 0 0 0 2px #E2C9A055;
+}
+form button {
+    background: linear-gradient(90deg, #A67C52 0%, #E2C9A0 100%);
+    color: #fff;
+    border: none;
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 8px;
+    padding: 10px 22px;
+    transition: background 0.2s, box-shadow 0.2s, transform 0.1s;
+    box-shadow: 0 2px 8px rgba(166, 124, 82, 0.10);
+    letter-spacing: 0.5px;
+}
+form button:hover {
+    background: linear-gradient(90deg, #7C5C3E 0%, #A67C52 100%);
+    box-shadow: 0 6px 18px rgba(166, 124, 82, 0.18);
+    transform: translateY(-2px) scale(1.03);
+}
+#searchBar, #filterCategory {
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1px solid #BFA890;
+    font-size: 1.05rem;
+    margin: 0 8px 18px 0;
+    background: #F3E9DD;
+    color: #A67C52;
+    transition: border 0.2s, box-shadow 0.2s;
+}
+#searchBar:focus, #filterCategory:focus {
+    border: 1.5px solid #7C5C3E;
+    box-shadow: 0 0 0 2px #7C5C3E55;
+}
+#productTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    background: #F9F6F2;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(139, 69, 19, 0.07);
+}
+#productTable th, #productTable td {
+    padding: 12px 10px;
+    text-align: left;
+}
+#productTable th {
+    background: linear-gradient(90deg, #E2C9A0 0%, #A67C52 100%);
+    color: #7C5C3E;
+    font-weight: 700;
+    border-bottom: 2px solid #BFA890;
+}
+#productTable tr:nth-child(even) td {
+    background: #F3E9DD;
+}
+#productTable tr:hover td {
+    background: #EAD7C1;
+}
+.action-btn {
+    background: #A67C52;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 6px 14px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-right: 6px;
+    transition: background 0.2s, transform 0.1s;
+}
+.action-btn.edit {
+    background: #7C5C3E;
+}
+.action-btn.delete {
+    background: #8C4A2F;
+}
+.action-btn:hover {
+    opacity: 0.92;
+    transform: scale(1.05);
+}
+@media (max-width: 800px) {
+    .card {
+        max-width: 98vw;
+        padding: 12px;
+    }
+    form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    #productTable th, #productTable td {
+        padding: 8px 4px;
+    }
+} 
