@@ -1,0 +1,142 @@
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(135deg, #FFD166 0%, #FF6F61 100%);
+    color: #222;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 36px;
+    color: #B967FF;
+    letter-spacing: 1px;
+    font-weight: 700;
+    font-size: 2.2rem;
+    text-shadow: 0 2px 8px rgba(255, 105, 97, 0.18);
+    margin-bottom: 24px;
+}
+
+.card {
+    background: #fff0e6;
+    border-radius: 18px;
+    box-shadow: 0 6px 32px rgba(255, 105, 97, 0.15);
+    max-width: 440px;
+    margin: 0 auto 32px auto;
+    padding: 32px 36px 28px 36px;
+    animation: fadeIn 1s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: none; }
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+input, button {
+    padding: 12px 16px;
+    font-size: 1.1rem;
+    border-radius: 9px;
+    border: 1px solid #FF914D;
+    outline: none;
+    transition: border 0.2s, box-shadow 0.2s;
+}
+input:focus, button:focus {
+    border: 1.5px solid #FF6F61;
+    box-shadow: 0 0 0 2px #FFD16655;
+}
+
+button {
+    background: linear-gradient(90deg, #FF914D 0%, #FFD166 100%);
+    color: #fff;
+    border: none;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s, box-shadow 0.2s, transform 0.1s;
+    box-shadow: 0 2px 8px rgba(255, 145, 77, 0.10);
+    letter-spacing: 0.5px;
+}
+button:hover {
+    background: linear-gradient(90deg, #FFD166 0%, #FF914D 100%);
+    box-shadow: 0 6px 18px rgba(255, 145, 77, 0.18);
+    transform: translateY(-2px) scale(1.03);
+}
+
+#countdownDisplay {
+    text-align: center;
+    font-size: 2.1rem;
+    margin: 32px 0 18px 0;
+    color: #43AA8B;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    background: #FFF9C4;
+    border-radius: 12px;
+    padding: 18px 0;
+    box-shadow: 0 2px 12px rgba(255, 209, 102, 0.07);
+    min-height: 56px;
+    transition: background 0.3s;
+}
+
+#eventList {
+    max-width: 440px;
+    margin: 0 auto 36px auto;
+    padding: 0;
+    list-style: none;
+}
+#eventList li {
+    background: #E6FFFA;
+    margin-bottom: 14px;
+    padding: 16px 20px;
+    border-radius: 12px;
+    border: 1px solid #6BCB77;
+    color: #B967FF;
+    font-weight: 600;
+    font-size: 1.08rem;
+    box-shadow: 0 1px 8px rgba(107, 203, 119, 0.08);
+    transition: box-shadow 0.2s, background 0.2s, transform 0.1s;
+    animation: fadeIn 0.7s;
+}
+#eventList li:hover {
+    background: #FFD6E0;
+    box-shadow: 0 4px 16px rgba(255, 105, 97, 0.13);
+    transform: scale(1.02);
+}
+
+#searchEvent {
+    display: block;
+    margin: 0 auto 28px auto;
+    max-width: 340px;
+    width: 92%;
+    padding: 12px 16px;
+    border-radius: 9px;
+    border: 1px solid #FF914D;
+    font-size: 1.1rem;
+    background: #FFF9C4;
+    color: #FF6F61;
+    transition: border 0.2s, box-shadow 0.2s;
+}
+#searchEvent:focus {
+    border: 1.5px solid #43AA8B;
+    box-shadow: 0 0 0 2px #43AA8B55;
+}
+
+@media (max-width: 600px) {
+    .card, #eventList {
+        max-width: 98vw;
+        padding: 12px;
+    }
+    h1 {
+        font-size: 1.3rem;
+        margin-top: 18px;
+    }
+    #countdownDisplay {
+        font-size: 1.2rem;
+        padding: 10px 0;
+    }
+} 
