@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Modules Demo - Task 7</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>JavaScript Modules Demo</h1>
+            <p>Understanding Modules, Importing, and Exporting in JavaScript</p>
+        </header>
+
+        <main>
+            <div class="info-section">
+                <h2> Module Overview</h2>
+                <div class="module-info">
+                    <div class="module-card">
+                        <h3>math.js</h3>
+                        <ul>
+                            <li><code>add(a, b)</code> - Addition function</li>
+                            <li><code>subtract(a, b)</code> - Subtraction function</li>
+                            <li><code>pi</code> - Pi constant (3.14159)</li>
+                        </ul>
+                    </div>
+                    <div class="module-card">
+                        <h3>greet.js</h3>
+                        <ul>
+                            <li><code>greet(name)</code> - Greeting function</li>
+                        </ul>
+                    </div>
+                    <div class="module-card">
+                        <h3>utils.js (Bonus)</h3>
+                        <ul>
+                            <li><code>capitalize(str)</code> - Capitalize first letter</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div id="results" class="results-container">
+                <!-- Results will be dynamically populated by app.js -->
+            </div>
+
+            <div class="code-section">
+                <h2> Code Examples</h2>
+                <div class="code-examples">
+                    <div class="code-block">
+                        <h3>Importing Modules</h3>
+                        <pre><code>// Import specific functions and constants
+import { add, subtract, pi } from './math.js';
+import { greet } from './greet.js';
+import { capitalize } from './utils.js';</code></pre>
+                    </div>
+                    <div class="code-block">
+                        <h3>Using Imported Functions</h3>
+                        <pre><code>// Using math functions
+const sum = add(5, 3);
+const difference = subtract(10, 4);
+
+// Using greeting function
+const message = greet("John");
+
+// Using utility function
+const capitalized = capitalize("javascript");</code></pre>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>Task 7: Understanding JavaScript Modules</p>
+            <p>Check the browser console for additional logging!</p>
+        </footer>
+    </div>
+
+    <!-- Load the main application script as a module -->
+    <script type="module" src="app.js"></script>
+</body>
+</html> 

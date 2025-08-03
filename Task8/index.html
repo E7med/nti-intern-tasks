@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Posts from API - Task 8</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Posts from API</h1>
+            <p>Fetching and displaying posts from JSONPlaceholder API</p>
+        </header>
+
+        <main>
+            <div class="loading-section" id="loading">
+                <div class="spinner"></div>
+                <p>Loading posts...</p>
+            </div>
+
+            <div class="error-section" id="error" style="display: none;">
+                <div class="error-message">
+                    <h2>Error Loading Posts</h2>
+                    <p>Failed to load posts. Please try again later.</p>
+                    <button onclick="loadPosts()" class="retry-btn">Retry</button>
+                </div>
+            </div>
+
+            <div class="posts-container" id="posts-container" style="display: none;">
+                <div class="posts-header">
+                    <h2>All Posts</h2>
+                    <div class="search-section">
+                        <input type="text" id="search-input" placeholder="Search posts..." class="search-input">
+                        <button onclick="searchPosts()" class="search-btn">Search</button>
+                    </div>
+                </div>
+                <div class="posts-grid" id="posts-grid">
+                    <!-- Posts will be dynamically populated here -->
+                </div>
+            </div>
+        </main>
+
+        <div class="modal" id="modal" style="display: none;">
+            <div class="modal-content">
+                <span class="close-btn" onclick="closeModal()">&times;</span>
+                <div class="modal-body" id="modal-body">
+                    <!-- Modal content will be populated here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
