@@ -1,0 +1,32 @@
+h1{
+    padding-left: 20px;
+}
+.navbar{
+    position: sticky;
+    display: flex;
+    background-color:cornflowerblue;
+    color: white;
+    align-items: center;
+    width: 100%;
+    padding: 10px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+.nav{
+    display: flex;
+    justify-content: center;
+    width: 100%; 
+}
+a{
+    color: white;
+    text-decoration: none;
+    padding: 20px;
+    margin: 20px;
+    font-weight:500;
+    font-size: 20px;
+    justify-content: center;
+    
+}
+a:hover {
+  background-color: rgba(211, 211, 211, 0.336);
+  border-radius: 10px;
+}

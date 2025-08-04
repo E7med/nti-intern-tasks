@@ -1,0 +1,12 @@
+.container{
+    background-color: #ecf0f1;
+    width: 92%;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    justify-self: center;
+    padding: 30px;
+    margin-top: 10px;
+}
+p{
+    padding-left: 50px;
+}
