@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Fleet | Elite Drive Car Rentals</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a.active::after,
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a.active {
+            color: #667eea;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 60vh;
+            background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-top: 80px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            max-width: 600px;
+        }
+
+        /* Filter Section */
+        .filter-section {
+            padding: 3rem 2rem;
+            background: white;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .filter-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .filter-tab {
+            padding: 0.8rem 2rem;
+            background: #f7fafc;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 500;
+            color: #4a5568;
+            transition: all 0.3s ease;
+        }
+
+        .filter-tab.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .filter-tab:hover {
+            background: #e2e8f0;
+        }
+
+        .filter-tab.active:hover {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        /* Fleet Section */
+        .fleet-section {
+            padding: 6rem 2rem;
+            background: #f8fafc;
+        }
+
+        .fleet-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 3rem;
+        }
+
+        .vehicle-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .vehicle-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        }
+
+        .vehicle-image {
+            height: 250px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+            position: relative;
+        }
+
+        .vehicle-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .vehicle-content {
+            padding: 2rem;
+        }
+
+        .vehicle-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+
+        .vehicle-title h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1a202c;
+            margin-bottom: 0.5rem;
+        }
+
+        .vehicle-title p {
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        .vehicle-price {
+            text-align: right;
+        }
+
+        .vehicle-price .price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 0.2rem;
+        }
+
+        .vehicle-price .period {
+            color: #64748b;
+            font-size: 0.8rem;
+        }
+
+        .vehicle-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #4a5568;
+            font-size: 0.9rem;
+        }
+
+        .feature-icon {
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .vehicle-actions {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            text-align: center;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-secondary {
+            background: #f7fafc;
+            color: #4a5568;
+            border: 1px solid #e2e8f0;
+        }
+
+        .btn-secondary:hover {
+            background: #e2e8f0;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-item p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a202c;
+            color: white;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: #667eea;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #cbd5e0;
+            text-decoration: none;
+            line-height: 1.8;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: #667eea;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #2d3748;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            text-align: center;
+            color: #718096;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .fleet-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .filter-tabs {
+                justify-content: flex-start;
+                overflow-x: auto;
+                padding-bottom: 1rem;
+            }
+            
+            .vehicle-features {
+                grid-template-columns: 1fr;
+            }
+            
+            .vehicle-actions {
+                flex-direction: column;
+            }
+        }
+
+        /* Hidden class for filtering */
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">Elite Drive</div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/services">Services</a></li>
+                <li><a href="/fleet" class="active">Fleet</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Our Premium Fleet</h1>
+            <p>Discover our carefully curated collection of premium vehicles, each maintained to the highest standards for your comfort and safety.</p>
+        </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="filter-section">
+        <div class="container">
+            <div class="filter-tabs">
+                <button class="filter-tab active" data-category="all">All Vehicles</button>
+                <button class="filter-tab" data-category="economy">Economy</button>
+                <button class="filter-tab" data-category="compact">Compact</button>
+                <button class="filter-tab" data-category="luxury">Luxury</button>
+                <button class="filter-tab" data-category="suv">SUV</button>
+                <button class="filter-tab" data-category="sports">Sports</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fleet Section -->
+    <section class="fleet-section">
+        <div class="container">
+            <div class="fleet-grid">
+                <!-- Economy Cars -->
+                <div class="vehicle-card" data-category="economy">
+                    <div class="vehicle-image">
+                        🚗
+                        <div class="vehicle-badge">Most Popular</div>
+                    </div>
+                    <div class="vehicle-content">
+                        <div class="vehicle-header">
+                            <div class="vehicle-title">
+                                <h3>Toyota Corolla</h3>
+                                <p>Economy • 2024 Model</p>
+                            </div>
+                            <div class="vehicle-price">
+                                <div class="price">$45</div>
+                                <div class="period">per day</div>
+                            </div>
+                        </div>
+                        <div class="vehicle-features">
+                            <div class="feature">
+                                <span class="feature-icon">👥</span>
+                                <span>5 Passengers</span>
+                            </div>
+                            <div class="feature">
+                                <span class="feature-icon">🎒</span>
+                                <span>2 Large Bags</span>
+                            </div>
+                            <div class="feature">
+                                <span class="feature-icon">⛽</span>
+                                <span>Fuel Efficient</span>
+                            </div>
+                            <div class="feature">
+                                <span class="feature-icon">🔧</span>
+                                <span>Manual/Auto</span>
+                            </div>
+                        </div>
+                        <div class="vehicle-actions">
+                            <a href="/contact" class="btn btn-primary">Book Now</a>
+                            <button class="btn btn-secondary">View Details</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Luxury Cars -->
+                <div class="vehicle-card" data-category="luxury">
+                    <div class="vehicle-image" style="background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);">
+                        🏎️
+                        <div class="vehicle-badge">Premium</div>
+                    </div>
+                    <div class="vehicle-content">
+                        <div class="vehicle-header">
+                            <div class="vehicle-title">
+                                <h3>BMW 5 Series</h3>
+                                <p>Luxury • 2024 Model</p>
+                            </div>
+                            <div class="vehicle-price">
+                                <div class="price">$120</div>
+                                <div class="period">per day</div>
+                            </div>
+                        </div>
+                        <div class="vehicle-features">
+                            <div class="feature">
+                                <span class="feature-icon">👥</span>
+                                <span>5 Passengers</span>
+                            </div>
+                            <div class="feature">
+                                <span class="feature-icon">🎒</span>
+                                <span>3 Large Bags</span>
+                            </div>
+                            <div class="feature">
+                                <span class="feature-icon">❄️</span>
+                                <span>Climate Control</span>
+                            </div>
+                            <div class="feature">
+                                <span class="feature-icon">🔧</span>
+                                <span>Automatic</span>
+                            </div>
+                        </div>
+                        <div class="vehicle-actions">
+                            <a href="/contact" class="btn btn-primary">Book Now</a>
+                            <button class="btn btn-secondary">View Details</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SUV -->
+                <div class="vehicle-card" data-category="suv">
+                    <div class="vehicle-image" style="background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);">
+                        🚙
+                        <div class="vehicle-badge">Family Choice</div>
+                    </div>
+                    <div class="vehicle-content">
+                        <div class="vehicle-header">
+                            <div class="vehicle-title">
+                                <h3>Toyota RAV4</h3>
+                                <p>SUV • 2024 Model</p>
+                            </div>
+                            <div class="vehicle-

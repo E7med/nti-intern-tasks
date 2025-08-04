@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services | Elite Drive Car Rentals</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a.active::after,
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a.active {
+            color: #667eea;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 60vh;
+            background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-top: 80px;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            max-width: 600px;
+        }
+
+        /* Services Section */
+        .services-section {
+            padding: 8rem 2rem;
+            background: #f8fafc;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+            margin-bottom: 6rem;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+        }
+
+        .service-header {
+            padding: 3rem 2rem 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-header h3 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .service-header p {
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+
+        .service-content {
+            padding: 2.5rem 2rem;
+        }
+
+        .service-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .service-features li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .service-features li:last-child {
+            border-bottom: none;
+        }
+
+        .service-features .check {
+            color: #48bb78;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .service-pricing {
+            background: #f7fafc;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .service-pricing .price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .service-pricing .period {
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-align: center;
+            width: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        /* Process Section */
+        .process-section {
+            padding: 8rem 2rem;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #1a202c;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #64748b;
+            margin-bottom: 5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .process-step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 0 auto 2rem;
+        }
+
+        .process-step h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #1a202c;
+        }
+
+        .process-step p {
+            color: #64748b;
+            line-height: 1.8;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-content h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+        }
+
+        .btn-white {
+            background: white;
+            color: #667eea;
+            padding: 1.2rem 3rem;
+            font-size: 1.1rem;
+            margin: 0 1rem;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+            padding: 1rem 3rem;
+            font-size: 1.1rem;
+            margin: 0 1rem;
+        }
+
+        .btn-outline:hover {
+            background: white;
+            color: #667eea;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a202c;
+            color: white;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: #667eea;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #cbd5e0;
+            text-decoration: none;
+            line-height: 1.8;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: #667eea;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #2d3748;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            text-align: center;
+            color: #718096;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .btn-white,
+            .btn-outline {
+                display: block;
+                margin: 1rem auto;
+                width: fit-content;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">Elite Drive</div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/services" class="active">Services</a></li>
+                <li><a href="/fleet">Fleet</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Premium Rental Services</h1>
+            <p>Comprehensive solutions tailored to meet your transportation needs with excellence and reliability at every step of your journey.</p>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section">
+        <div class="container">
+            <div class="services-grid">
+                <!-- Daily Rentals -->
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-icon">🚗</div>
+                        <h3>Daily Rentals</h3>
+                        <p>Perfect for short trips, business meetings, or weekend adventures</p>
+                    </div>
+                    <div class="service-content">
+                        <ul class="service-features">
+                            <li><span class="check">✓</span> Flexible pickup and drop-off</li>
+                            <li><span class="check">✓</span> Unlimited mileage options</li>
+                            <li><span class="check">✓</span> Comprehensive insurance coverage</li>
+                            <li><span class="check">✓</span> 24/7 roadside assistance</li>
+                            <li><span class="check">✓</span> Free additional driver</li>
+                        </ul>
+                        <div class="service-pricing">
+                            <div class="price">From $45</div>
+                            <div class="period">per day</div>
+                        </div>
+                        <a href="/contact" class="btn">Book Now</a>
+                    </div>
+                </div>
+
+                <!-- Monthly Leasing -->
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-icon">📅</div>
+                        <h3>Monthly Leasing</h3>
+                        <p>Extended rentals with significant savings for long-term needs</p>
+                    </div>
+                    <div class="service-content">
+                        <ul class="service-features">
+                            <li><span class="check">✓</span> Discounted monthly rates</li>
+                            <li><span class="check">✓</span> Priority vehicle selection</li>
+                            <li><span class="check">✓</span> Free maintenance and servicing</li>
+                            <li><span class="check">✓</span> Replacement vehicle guarantee</li>
+                            <li><span class="check">✓</span> Flexible contract terms</li>
+                        </ul>
+                        <div class="service-pricing">
+                            <div class="price">From $899</div>
+                            <div class="period">per month</div>
+                        </div>
+                        <a href="/contact" class="btn">Get Quote</a>
+                    </div>
+                </div>
+
+                <!-- Corporate Solutions -->
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-icon">🏢</div>
+                        <h3>Corporate Solutions</h3>
+                        <p>Tailored fleet management for businesses of all sizes</p>
+                    </div>
+                    <div class="service-content">
+                        <ul class="service-features">
+                            <li><span class="check">✓</span> Volume discounts available</li>
+                            <li><span class="check">✓</span> Dedicated account manager</li>
+                            <li><span class="check">✓</span> Centralized billing system</li>
+                            <li><span class="check">✓</span> Employee booking portal</li>
+                            <li><span class="check">✓</span> Detailed usage reports</li>
+                        </ul>
+                        <div class="service-pricing">
+                            <div class="price">Custom</div>
+                            <div class="period">pricing available</div>
+                        </div>
+                        <a href="/contact" class="btn">Contact Sales</a>
+                    </div>
+                </div>
+
+                <!-- Airport Transfers -->
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-icon">✈️</div>
+                        <h3>Airport Transfers</h3>
+                        <p>Reliable transportation to and from airports with meet & greet service</p>
+                    </div>
+                    <div class="service-content">
+                        <ul class="service-features">
+                            <li><span class="check">✓</span> Professional chauffeur service</li>
+                            <li><span class="check">✓</span> Flight tracking and monitoring</li>
+                            <li><span class="check">✓</span> Meet and greet at arrivals</li>
+                            <li><span class="check">✓</span> Luxury vehicle options</li>
+                            <li><span class="check">✓</span> Fixed pricing guarantee</li>
+                        </ul>
+                        <div class="service-pricing">
+                            <div class="price">From $75</div>
+                            <div class="period">per transfer</div>
+                        </div>
+                        <a href="/contact" class="btn">Schedule Transfer</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process-section">
+        <div class="container">
+            <h2 class="section-title">How It Works</h2>
+            <p class="section-subtitle">Simple, fast, and hassle-free rental process designed to get you on the road quickly and efficiently.</p>
+            
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h3>Choose Your Vehicle</h3>
+                    <p>Browse our extensive fleet and select the perfect vehicle for your needs. Filter by category, features, or price range.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h3>Book & Confirm</h3>
+                    <p>Complete your reservation online or by phone. Receive instant confirmation with all rental details and pickup instructions.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h3>Pick Up & Drive</h3>
+                    <p>Quick document verification and vehicle inspection. Get your keys and hit the road with confidence and peace of mind.</p>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h3>Return & Go</h3>
+                    <p>Simple return process with final inspection. Electronic receipt and damage-free confirmation sent instantly to your email.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Ready to Get Started?</h2>
+            <p>Join thousands of satisfied customers who trust Elite Drive for their transportation needs. Experience the difference of premium service today.</p>
+            <div>
+                <a href="/fleet" class="btn btn-white">View Our Fleet</a>
+                <a href="/contact" class="btn btn-outline">Get a Quote</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Elite Drive</h3>
+                <p>Your trusted partner for premium car rentals. Experience the difference of quality service and exceptional vehicles.</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <p><a href="/">Home</a></p>
+                <p><a href="/services">Our Services</a></p>
+                <p><a href="/fleet">Vehicle Fleet</a></p>
+                <p><a href="/contact">Contact Us</a></p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Services</h3>
+                <p>Daily Rentals</p>
+                <p>Monthly Leasing</p>
+                <p>Corporate Solutions</p>
+                <p>Airport Transfers</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contact Info</h3>
+                <p>📍 Alexandria & Cairo, Egypt</p>
+                <p>📞 (+20) 01X-XXX-XXXX</p>
+                <p>✉️ info@elitedrive.com</p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 Elite Drive Car Rentals. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Service cards animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.service-card, .process-step').forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(30px)';
+            element.style.transition = 'all 0.6s ease';
+            observer.observe(element);
+        });
+    </script>
+</body>
+</html>
